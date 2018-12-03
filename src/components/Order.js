@@ -1,10 +1,18 @@
 import React from "react";
+
+import OrderWrapper from "./OrderWrapper";
 import { formatPrice } from "../helpers";
+import { getTotalOrder } from "../utils";
+
 class Order extends React.Component {
   renderOrder = key => {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
     const isAvailable = fish && fish.status === "available";
+
+    if (!fish) {
+      return <li key={key}>loading . . </li>;
+    }
 
     if (!isAvailable) {
       return (
@@ -22,29 +30,14 @@ class Order extends React.Component {
   };
   render() {
     const orderIds = Object.keys(this.props.order);
-    const total = orderIds.reduce((prevTotal, key) => {
-      const fish = this.props.fishes[key];
-      const count = this.props.order[key];
-      const isAvailable = fish && fish.status === "available";
-
-      if (isAvailable) {
-        return prevTotal + count * fish.price;
-      }
-
-      return prevTotal;
-    }, 0);
+    const total = getTotalOrder(orderIds, this.props.fishes, this.props.order);
 
     return (
-      <React.Fragment>
-        <div className="order-wrap">
-          <h2>Order</h2>
-          <ul className="order">{orderIds.map(this.renderOrder)}</ul>
-          <div className="total">
-            Total:
-            <strong>{formatPrice(total)}</strong>
-          </div>
-        </div>
-      </React.Fragment>
+      <OrderWrapper
+        orderIds={orderIds}
+        renderOrder={this.renderOrder}
+        total={total}
+      />
     );
   }
 }
