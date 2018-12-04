@@ -3,7 +3,6 @@ import React from "react";
 import OrderWrapper from "./OrderWrapper";
 import { formatPrice } from "../helpers";
 import { getTotalOrder } from "../utils";
-
 class Order extends React.Component {
   renderOrder = key => {
     const fish = this.props.fishes[key];
@@ -14,6 +13,10 @@ class Order extends React.Component {
       return <li key={key}>loading . . </li>;
     }
 
+    if (!count) {
+      return null;
+    }
+
     if (!isAvailable) {
       return (
         <li key={key}>
@@ -21,10 +24,12 @@ class Order extends React.Component {
         </li>
       );
     }
+
     return (
       <li key={key}>
         {count} lbs {fish.name}
         {formatPrice(count * fish.price)}
+        <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
       </li>
     );
   };
