@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { formatPrice } from "../helpers";
 import { TransitionGroup } from "react-transition-group";
 
@@ -14,5 +15,11 @@ const OrderWrapper = ({ orderIds, renderOrder, total }) => (
     </div>
   </div>
 );
+
+OrderWrapper.propTypes = {
+  orderIds: PropTypes.array,
+  renderOrder: PropTypes.func,
+  total: PropTypes.number
+};
 
 export default OrderWrapper;

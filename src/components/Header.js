@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 const Header = ({ tagline }) => (
   <React.Fragment>
     <header className="top">
@@ -17,5 +17,9 @@ const Header = ({ tagline }) => (
     </header>
   </React.Fragment>
 );
+
+Header.propTypes = {
+  tagline: PropTypes.string.isRequired
+};
 
 export default Header;

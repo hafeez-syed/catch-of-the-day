@@ -1,6 +1,7 @@
 import React from "react";
-import base from "../base";
+import PropTypes from "prop-types";
 
+import base from "../base";
 import Header from "./Header";
 import Order from "./Order";
 import Inventory from "./Inventory";
@@ -13,12 +14,15 @@ class App extends React.Component {
     order: {}
   };
 
+  static propTypes = {
+    match: PropTypes.object
+  };
+
   componentDidMount() {
     const { params } = this.props.match;
     const localStorageRef = localStorage.getItem(params.storeId);
 
     if (localStorageRef) {
-      console.log("restoring it!!!");
       this.setState({ order: JSON.parse(localStorageRef) });
     }
 
