@@ -11,7 +11,8 @@
     "eject": "react-scripts eject",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
     "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "deploy-manual": "aws s3 cp --recursive build/ s3://hafeezsyed.com"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "keywords": [
     "react",
     "webpack",
+    "jest",
     "firebase",
     "stylus",
     "now"
@@ -41,6 +43,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-react": "7.11.1",
     "firebase": "5.6.0",
+    "jest": "23.6.0",
     "prop-types": "15.6.2",
     "re-base": "4.0.0",
     "react": "16.6.3",
