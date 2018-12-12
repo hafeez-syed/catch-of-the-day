@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "react-scripts start",
-    "start": "serve --single ./build",
+    "start": "serve --single ./catch-of-the-day",
     "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
-    "build": "react-scripts build",
+    "build": "react-scripts build && mv build catch-of-the-day",
     "eject": "react-scripts eject",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
     "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css",
