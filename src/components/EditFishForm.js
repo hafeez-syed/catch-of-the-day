@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+import { formatPrice } from '../helpers';
+
 class EditFishForm extends React.Component {
   static propTypes = {
     fish: PropTypes.shape({
@@ -36,7 +39,7 @@ class EditFishForm extends React.Component {
         <input
           type="text"
           name="price"
-          value={price}
+          value={formatPrice(price)}
           onChange={this.handleChange}
         />
         <select name="status" value={status} onChange={this.handleChange}>
