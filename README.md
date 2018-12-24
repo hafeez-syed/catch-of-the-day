@@ -16,7 +16,7 @@ and open <localhost:3000> in your browser.
 ```
 npm run build
 ``` 
-to create a `build` folder.
+this will create a `build` folder.
 
 To See the production app running click below
 

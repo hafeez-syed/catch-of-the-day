@@ -20,11 +20,9 @@
   },
   "keywords": [
     "react",
-    "webpack",
     "jest",
     "firebase",
-    "stylus",
-    "now"
+    "stylus"
   ],
   "author": "Hafeez Syed",
   "license": "MIT",
