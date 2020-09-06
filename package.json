@@ -5,13 +5,14 @@
   "private": true,
   "scripts": {
     "dev": "react-scripts start",
-    "start": "serve --single ./build",
+    "start": "serve --single ./build/catch-of-the-day",
     "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
-    "build": "react-scripts build",
+    "build": "react-scripts build && sh script.sh catch-of-the-day",
     "eject": "react-scripts eject",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
     "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "deploy-manual": "aws s3 cp --recursive build/ s3://hafeezsyed.com"
   },
   "repository": {
     "type": "git",
@@ -19,17 +20,16 @@
   },
   "keywords": [
     "react",
-    "webpack",
+    "jest",
     "firebase",
-    "stylus",
-    "now"
+    "stylus"
   ],
   "author": "Hafeez Syed",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hafeez-syed/catch-of-the-day/issues"
   },
-  "homepage": "/",
+  "homepage": "/catch-of-the-day/",
   "devDependencies": {
     "concurrently": "5.3.0",
     "react-scripts": "3.4.3"
